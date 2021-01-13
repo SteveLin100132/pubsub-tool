@@ -4,6 +4,10 @@
   "description": "Producer and Consumer Tool for every streaming component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteveLin100132/pubsub-tool.git"
+  },
   "scripts": {
     "test": "nyc --reporter=lcov mocha --require ts-node/register test/**/*.ts",
     "start": "npm run build:live",

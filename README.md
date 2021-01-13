@@ -30,7 +30,7 @@ Parameter | Type | Description
 schemaRegistry | SchemaRegistry | Schema Registry
 avroResolver | AvroResolveStrategy | Avro Resolve Strategy
 
-[Full Example](http://localhost)
+[Full Example](https://github.com/SteveLin100132/pubsub-tool/blob/master/examples/confluent-kafka-consumer.ts)
 
 ```typescript
 import {
@@ -57,7 +57,7 @@ schemaRegistry | SchemaRegistry | Schema Registry
 avroResolver | AvroResolveStrategy | Avro Resolve Strategy
 destination | string | Pubish destination
 
-[Full Example](http://localhost)
+[Full Example](https://github.com/SteveLin100132/pubsub-tool/blob/master/examples/confluent-kafka-producer.ts)
 
 ```typescript
 import {
