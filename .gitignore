@@ -1,0 +1,12 @@
+# Module
+node_modules
+
+# Coverage
+.nyc_output
+coverage
+
+# Log
+logs
+
+# Other
+.alm

@@ -1,0 +1,6 @@
+{
+  "exclude": ["tests", "src/app/shared/sdk"],
+  "extension": [".js", ".ts"],
+  "reporter": ["text", "html", "lcov"],
+  "exclude-after-remap": false
+}
