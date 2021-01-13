@@ -24,7 +24,7 @@ import {
  */
 
 const kafkaHost = 'localhost:9193,localhost:9193,localhost:9193';
-const topic = 'wcd.dx.fem20.meterreading';
+const topic = 'testing.topic';
 const registryHost =
   'http://localhost:8081,http://localhost:8081,http://localhost:8081';
 
