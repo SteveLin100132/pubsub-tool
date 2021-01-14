@@ -12,5 +12,7 @@
 export * from './avro';
 export * from './consumer';
 export * from './http';
+export * from './kafka';
 export * from './producer';
 export * from './schema-registry';
+export * from './utils';

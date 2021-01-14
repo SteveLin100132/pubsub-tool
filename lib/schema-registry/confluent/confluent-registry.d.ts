@@ -90,5 +90,5 @@ export declare class ConfluentRegistry implements SchemaRegistry {
      * @param id Schema ID
      * @return 回傳特定ID的Schema
      */
-    getSchemaById(id: number): Promise<SchemaModel>;
+    getSchemaById(id: number): Promise<SchemaModel | undefined>;
 }

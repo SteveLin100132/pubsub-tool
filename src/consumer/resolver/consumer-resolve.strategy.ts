@@ -20,5 +20,5 @@ export interface ConsumerResolveStrategy {
    * @param input 解析前的資料
    * @return 回傳解析後的資料
    */
-  resolve(input: any): Promise<any>;
+  resolve<T>(input: any): Promise<T | undefined>;
 }

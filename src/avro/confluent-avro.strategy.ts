@@ -57,17 +57,22 @@ export class ConfluentAvroStrategy implements AvroResolveStrategy {
   ): Promise<Buffer | Buffer[]> {
     const schemaId = await schemaRegistry.getLatestSchemaId(topic);
     const res = await schemaRegistry.getSchemaById(schemaId);
-    const schema = JSON.parse(res.schema);
-    const results: Buffer[] = [];
 
-    if (Array.isArray(json)) {
-      json.forEach((obj) => {
-        const result = this.encoded(schema, schemaId, obj);
-        results.push(result);
-      });
-      return results;
+    if (res) {
+      const schema = JSON.parse(res.schema);
+      const results: Buffer[] = [];
+
+      if (Array.isArray(json)) {
+        json.forEach((obj) => {
+          const result = this.encoded(schema, schemaId, obj);
+          results.push(result);
+        });
+        return results;
+      } else {
+        return this.encoded(schema, schemaId, json);
+      }
     } else {
-      return this.encoded(schema, schemaId, json);
+      throw new Error('Avro schema not found');
     }
   }
 
@@ -87,9 +92,13 @@ export class ConfluentAvroStrategy implements AvroResolveStrategy {
       if (buffer.readUInt8(0) === 0) {
         const schemaId = buffer.readUInt32BE(1);
         const res = await schemaRegistry.getSchemaById(schemaId);
-        const schema = JSON.parse(res.schema);
-        const type = avro.Type.forSchema(schema);
-        return type.fromBuffer(buffer.slice(5));
+        if (res) {
+          const schema = JSON.parse(res.schema);
+          const type = avro.Type.forSchema(schema);
+          return type.fromBuffer(buffer.slice(5));
+        } else {
+          throw new Error('Avro schema not found');
+        }
       } else {
         throw new Error(`Not Avro Encoded Message: ${JSON.stringify(buffer)}`);
       }

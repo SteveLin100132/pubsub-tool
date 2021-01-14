@@ -85,7 +85,7 @@ export class ConfluentRegistry implements SchemaRegistry {
   public getVersions(topic: string): Promise<number[]> {
     return new Promise<number[]>((resolve, reject) => {
       if (this.topicSchemaVersionFlyweight.get(topic)) {
-        resolve(this.topicSchemaVersionFlyweight.get(topic));
+        resolve(this.topicSchemaVersionFlyweight.get(topic) ?? []);
       } else {
         this.http.get(
           this.getSubjectVersionsUrl(topic),
@@ -186,8 +186,8 @@ export class ConfluentRegistry implements SchemaRegistry {
    * @param id Schema ID
    * @return 回傳特定ID的Schema
    */
-  public getSchemaById(id: number): Promise<SchemaModel> {
-    return new Promise<SchemaModel>((resolve, reject) => {
+  public getSchemaById(id: number): Promise<SchemaModel | undefined> {
+    return new Promise<SchemaModel | undefined>((resolve, reject) => {
       if (this.schemaFlyweight.get(id)) {
         resolve(this.schemaFlyweight.get(id));
       } else {
