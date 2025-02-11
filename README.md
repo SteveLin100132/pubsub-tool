@@ -1,6 +1,6 @@
+# PubSub Tool
 
-
-PubSub Tool
+pubsub-tool 是一款專為 Kafka 訂閱與發布設計的工具庫，提供 Confluent Schema Registry 和 Avro 解析能力，簡化 Kafka 消息處理流程。
 
 # Install
 
